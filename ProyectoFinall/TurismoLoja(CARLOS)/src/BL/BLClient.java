@@ -41,8 +41,6 @@ public class BLClient {
     {
         Client objClient = new Client();
         ResultSet rs = objDatClient.findIdentification(strCedula);
-   //     rs.first();
-     //   System.out.println(rs);
         ResultSetMetaData rm = rs.getMetaData();
         //Recupera los campos de la tabla
         int columnCount = rm.getColumnCount();

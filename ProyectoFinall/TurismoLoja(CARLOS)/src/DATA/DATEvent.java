@@ -24,8 +24,8 @@ public class DATEvent {
     {
         Statement st = c.abrirConexion().createStatement();
         
-        String Sentencia ="select events.idEvent,nameEvent, cost, date, hour, minutes, description, idCat, idPlace, idState from client, events "
-                + "where client.idClient = events.idClient and client.identification = "+identification +" order by 1" ;
+        String Sentencia ="select event.idEvent,nameEvent, cost, date, hour, minutes, description, idCat, idPlace, idState from client, event "
+                + "where client.idClient = event.idClient and client.identification = "+identification +" order by 1" ;
         ResultSet rs = st.executeQuery(Sentencia);
         return rs;
     }
@@ -34,7 +34,7 @@ public class DATEvent {
              throws ClassNotFoundException, SQLException{
         PreparedStatement ps = null;
         Connection con = c.abrirConexion();
-        String sql = "INSERT INTO EVENTS(nameEvent, cost, date, hour, minutes, description, idCat, idPlace, idClient, idState, idAdmin) "
+        String sql = "INSERT INTO EVENT(nameEvent, cost, date, hour, minutes, description, idCat, idPlace, idClient, idState, idAdmin) "
                 + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         try {
             ps = con.prepareStatement(sql);
@@ -64,7 +64,7 @@ public class DATEvent {
         
         
         Statement st = c.abrirConexion().createStatement();
-        String Sentencia = String.format("SELECT * FROM `events` WHERE `idState` = %d", targetState);
+        String Sentencia = String.format("SELECT * FROM `event` WHERE `idState` = %d", targetState);
         ResultSet rs = st.executeQuery(Sentencia);
         return rs;
     
@@ -75,7 +75,7 @@ public class DATEvent {
     
                 
         Statement st = c.abrirConexion().createStatement();
-        String Sentencia = String.format("SELECT * FROM `events` WHERE `idEvent` = %d", targetId);
+        String Sentencia = String.format("SELECT * FROM `event` WHERE `idEvent` = %d", targetId);
         ResultSet rs = st.executeQuery(Sentencia);
         return rs;
     

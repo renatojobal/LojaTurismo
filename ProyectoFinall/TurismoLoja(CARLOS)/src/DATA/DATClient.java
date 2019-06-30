@@ -37,7 +37,6 @@ public class DATClient {
         Statement st = c.abrirConexion().createStatement();
         String Sentencia = "SELECT * FROM client WHERE IDENTIFICATION = " + identification ;
         ResultSet rs = st.executeQuery(Sentencia);
-        System.out.println(rs);
         return rs;
     }
     
