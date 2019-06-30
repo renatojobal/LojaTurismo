@@ -144,10 +144,10 @@ public class BLEvent {
     
                 
                 // Cargamos los atributos de categoria, lugar y cliente por su id
-                category =  objBLCategory.searchCategoryById(idCat);
-                place = objBLPlace.findPlaceDB(idPlace+"");
-                
-                
+                category =  objBLCategory.findCategoryDB(String.valueOf(idCat));
+                place = objBLPlace.findPlaceDB(String.valueOf(idPlace));
+                System.out.println("name");
+               
             }
 
             // Recorremos la consulta para crear objetos uno por uno

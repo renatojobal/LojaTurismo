@@ -195,22 +195,22 @@ public class validateEvents extends javax.swing.JFrame {
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         // Listar todos los datos
-        this.uploadArrayEvents();
-        tblEventos.removeAll();
-        Object columnas[] = {"Nombre", "Costo", "Fecha", "Descripcion", "Categoria", "Calle Principal", "Calle Secundaria", "Referencia"};
-        DefaultTableModel modelo = new DefaultTableModel(null, columnas);
-        tblEventos.setModel(modelo);
+        //this.uploadArrayEvents();
+        //tblEventos.removeAll();
+//        Object columnas[] = {"Nombre", "Costo", "Fecha", "Descripcion", "Categoria", "Calle Principal", "Calle Secundaria", "Referencia"};
+//        DefaultTableModel modelo = new DefaultTableModel(null, columnas);
+//        tblEventos.setModel(modelo);
 
-        
-        for(Events event: arrayEvents){
-            String newValor[] = {event.getName(), event.getCost()+"", event.getDate()+"", event.getDescription(), event.getCategory().getCategoryName(),
-          event.getPlace().getPrincipalStreet(), event.getPlace().getSecondaryStreet(), event.getPlace().getReference()};
-            
-            
-            modelo.addRow(newValor);
-        
-        
-        }
+        System.out.println(arrayEvents);
+//        for(Events event: arrayEvents){
+//            String newValor[] = {event.getName(), event.getCost()+"", event.getDate()+"", event.getDescription(), event.getCategory().getCategoryName(),
+//          event.getPlace().getPrincipalStreet(), event.getPlace().getSecondaryStreet(), event.getPlace().getReference()};
+//            
+//            
+//            modelo.addRow(newValor);
+//        
+//        
+//        }
         
         
     }//GEN-LAST:event_btnListarActionPerformed

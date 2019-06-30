@@ -64,7 +64,7 @@ public class DATEvent {
         
         
         Statement st = c.abrirConexion().createStatement();
-        String Sentencia = String.format("SELECT * FROM `event` WHERE `idState` = %d", targetState);
+        String Sentencia = String.format("SELECT * FROM event WHERE event.idState = "+targetState);
         ResultSet rs = st.executeQuery(Sentencia);
         return rs;
     
@@ -75,7 +75,7 @@ public class DATEvent {
     
                 
         Statement st = c.abrirConexion().createStatement();
-        String Sentencia = String.format("SELECT * FROM `event` WHERE `idEvent` = %d", targetId);
+        String Sentencia = String.format("SELECT * FROM event WHERE event.idEvent = "+targetId);
         ResultSet rs = st.executeQuery(Sentencia);
         return rs;
     

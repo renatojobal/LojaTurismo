@@ -413,6 +413,26 @@ public final class CreateEvent extends javax.swing.JFrame {
     private void jButtonLisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLisActionPerformed
 
         this.tableEvents.removeAll();
+        Object columnas[] = {"Nombre Evento", "Costo", "Fecha", "Hora de inicio", "Categoria", "Descripcion",
+            "Calle Principal", "Calle Secundaria", "Referencia", "Barrio", "Estado"};
+        DefaultTableModel modelo = new DefaultTableModel(null, columnas);
+        this.tableEvents.setModel(modelo);
+        for (Events objEvents : objClient.getArrayEvents()) {
+            String NewValor[] = {objEvents.getName(),
+                String.valueOf(objEvents.getCost()),
+                String.valueOf(objEvents.getDate()),
+                objEvents.getHour()+":"+objEvents.getMinutes(),
+                objEvents.getCategory().getCategoryName(),
+                objEvents.getDescription(),
+                objEvents.getPlace().getPrincipalStreet(),
+                objEvents.getPlace().getSecondaryStreet(),
+                objEvents.getPlace().getReference(),
+                objEvents.getPlace().getNeighborhood(),
+                objEvents.getState().getDescription()
+            };
+            modelo.addRow(NewValor);
+        }
+
         
 
     }//GEN-LAST:event_jButtonLisActionPerformed
