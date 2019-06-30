@@ -40,10 +40,10 @@ public final class CreateEvent extends javax.swing.JFrame {
     BLEvent objBLEvents = new BLEvent();
     int rowSel = -1;
 
-    public CreateEvent() throws ClassNotFoundException, SQLException  {
+    public CreateEvent()  {
         initComponents();
         this.setLocationRelativeTo(null);
-        objClient = objBLClient.findEventsClient(GlobalVariables.loggedClient);
+        //objClient = objBLClient.findEventsClient(GlobalVariables.loggedClient);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -390,7 +390,6 @@ public final class CreateEvent extends javax.swing.JFrame {
             this.txtnNeighborhod.setEnabled(false);
             this.jButtonMod.setEnabled(true);
             this.jButtonCan.setEnabled(false);
-            this.jButtonLisActionPerformed(evt); //ejecuta el codigo en el boton Listar
         } else {
             this.cbmCategory.removeAll();
             ObtenerCategorias();
@@ -412,27 +411,9 @@ public final class CreateEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNueActionPerformed
 
     private void jButtonLisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLisActionPerformed
-        this.tableEvents.removeAll();
-        Object columnas[] = {"Nombre Evento", "Costo", "Fecha", "Hora de inicio", "Categoria", "Descripcion",
-            "Calle Principal", "Calle Secundaria", "Referencia", "Barrio", "Estado"};
-        DefaultTableModel modelo = new DefaultTableModel(null, columnas);
-        this.tableEvents.setModel(modelo);
-        for (Events objEvents : objClient.getArrayEvents()) {
-            String NewValor[] = {objEvents.getName(),
-                "" + objEvents.getCost(),
-                "" + objEvents.getDate(),
-                "" + objEvents.getHour()+":"+objEvents.getMinutes(),
-                objEvents.getCategory().getCategoryName(),
-                objEvents.getDescription(),
-                objEvents.getPlace().getPrincipalStreet(),
-                objEvents.getPlace().getSecondaryStreet(),
-                objEvents.getPlace().getReference(),
-                objEvents.getPlace().getNeighborhood(),
-                objEvents.getState().getDescription()
-            };
-            modelo.addRow(NewValor);
-        }
 
+        this.tableEvents.removeAll();
+        
 
     }//GEN-LAST:event_jButtonLisActionPerformed
 
@@ -522,13 +503,7 @@ public final class CreateEvent extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new CreateEvent().setVisible(true);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(CreateEvent.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (SQLException ex) {
-                    Logger.getLogger(CreateEvent.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new CreateEvent().setVisible(true);
             }
         });
     }
