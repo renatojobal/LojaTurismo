@@ -91,16 +91,13 @@ public class Login_V31 extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
         try {
-            objClient = objBLClient.findIdentificationDB(this.txtIdentification.getText());
-            System.out.println("Hasdoaksd");   
+            objClient = objBLClient.findIdentificationDB(this.txtIdentification.getText());  
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Login_V31.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex);
+
         }
-        System.out.println(objClient);
+        
         if(objClient.getIdClient() != 0){
-            System.out.println(objClient);
-            System.out.println("Si es diferente  de 0");
             objClient = objBLClient.ValidarPassword(objClient, String.valueOf(this.jPassword.getPassword()));
             if(objClient != null){
                 GlobalVariables.loggedClient = objClient;
