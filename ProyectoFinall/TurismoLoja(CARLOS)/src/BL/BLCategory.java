@@ -65,12 +65,12 @@ public class BLCategory {
             
             // Creamos el objeto
             String categoryName = rs.getString("categoryName");
-            
+                        System.out.println("Holaaa");
             Category objCategory = new Category(idCat, categoryName);
-            
+
             return objCategory;
         } catch (Exception e) {
-            System.err.println("Ha ocurrido una excepcion en el metodo 'searchVategoryById' de la clase 'BLCategory'");
+            System.err.println("Ha ocurrido una excepcion en el metodo 'searchCategoryById' de la clase 'BLCategory'"+e);
             return null;
         }
     
@@ -96,7 +96,7 @@ public class BLCategory {
             }
             return categoriesArray;
         } catch (Exception e) {
-            System.err.println("Ha ocurrido una excepcion en el metodo 'searchVategoryById' de la clase 'BLCategory'"+e);
+            System.err.println("Ha ocurrido una excepcion en el metodo 'listCategories' de la clase 'BLCategory'"+e);
             return null;
             
         }

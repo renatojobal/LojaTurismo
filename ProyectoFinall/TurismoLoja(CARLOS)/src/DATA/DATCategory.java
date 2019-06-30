@@ -40,7 +40,7 @@ public class DATCategory {
        // Metodo que busca una configuracion por su id
     public ResultSet searchCategoryById(int idCategory) throws SQLException, ClassNotFoundException{
         Statement st = objDATConexion.getConnection().createStatement();
-        String sentenceSQL = "SELECT * FROM `category` WHERE `idCat` = "+idCategory;
+        String sentenceSQL = String.format("SELECT * FROM `category` WHERE `idCat` = %d",idCategory) ;
         ResultSet rs = st.executeQuery(sentenceSQL);
         return rs;
     }

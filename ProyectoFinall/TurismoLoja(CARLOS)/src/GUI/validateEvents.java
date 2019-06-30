@@ -5,12 +5,20 @@
  */
 package GUI;
 
+import BL.BLEvent;
+import CLASES.Events;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author JIMMY
  */
 public class validateEvents extends javax.swing.JFrame {
 
+    ArrayList<Events> arrayEvents = new ArrayList();
+    BLEvent objBLEvents = new BLEvent();
+    
     /**
      * Creates new form crearEvento
      */
@@ -187,6 +195,23 @@ public class validateEvents extends javax.swing.JFrame {
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         // Listar todos los datos
+        this.uploadArrayEvents();
+        tblEventos.removeAll();
+        Object columnas[] = {"Nombre", "Costo", "Fecha", "Descripcion", "Categoria", "Calle Principal", "Calle Secundaria", "Referencia"};
+        DefaultTableModel modelo = new DefaultTableModel(null, columnas);
+        tblEventos.setModel(modelo);
+
+        
+        for(Events event: arrayEvents){
+            String newValor[] = {event.getName(), event.getCost()+"", event.getDate()+"", event.getDescription(), event.getCategory().getCategoryName(),
+          event.getPlace().getPrincipalStreet(), event.getPlace().getSecondaryStreet(), event.getPlace().getReference()};
+            
+            
+            modelo.addRow(newValor);
+        
+        
+        }
+        
         
     }//GEN-LAST:event_btnListarActionPerformed
 
@@ -228,6 +253,11 @@ public class validateEvents extends javax.swing.JFrame {
         });
     }
     
+    
+    // Metodo para actualizar la varible local de arrayEvents
+    public void uploadArrayEvents(){
+        this.arrayEvents = objBLEvents.listEventsWhereState(1);
+    }
    
             
 

@@ -141,7 +141,7 @@ public class BLEvent {
                 
                 int idCat = rs.getInt("idCat");
                 int idPlace = rs.getInt("idPlace");
-                int idClient = rs.getInt("idClient");
+    
                 
                 // Cargamos los atributos de categoria, lugar y cliente por su id
                 category =  objBLCategory.searchCategoryById(idCat);
