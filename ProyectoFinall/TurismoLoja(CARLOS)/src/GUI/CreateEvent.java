@@ -43,7 +43,7 @@ public final class CreateEvent extends javax.swing.JFrame {
     public CreateEvent()  {
         initComponents();
         this.setLocationRelativeTo(null);
-        //objClient = objBLClient.findEventsClient(GlobalVariables.loggedClient);
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -411,8 +411,32 @@ public final class CreateEvent extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNueActionPerformed
 
     private void jButtonLisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLisActionPerformed
-
+        try {
+            objClient = objBLClient.findEventsClient(GlobalVariables.loggedClient);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(CreateEvent.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.tableEvents.removeAll();
+        Object columnas[] = {"Nombre Evento", "Costo", "Fecha", "Hora de inicio", "Categoria", "Descripcion",
+            "Calle Principal", "Calle Secundaria", "Referencia", "Barrio", "Estado"};
+        DefaultTableModel modelo = new DefaultTableModel(null, columnas);
+        this.tableEvents.setModel(modelo);
+        for (Events objEvents : objClient.getArrayEvents()) {
+            String NewValor[] = {objEvents.getName(),
+                String.valueOf(objEvents.getCost()),
+                String.valueOf(objEvents.getDate()),
+                objEvents.getHour()+":"+objEvents.getMinutes(),
+                objEvents.getCategory().getCategoryName(),
+                objEvents.getDescription(),
+                objEvents.getPlace().getPrincipalStreet(),
+                objEvents.getPlace().getSecondaryStreet(),
+                objEvents.getPlace().getReference(),
+                objEvents.getPlace().getNeighborhood(),
+                objEvents.getState().getDescription()
+            };
+            modelo.addRow(NewValor);
+        }
+
         
 
     }//GEN-LAST:event_jButtonLisActionPerformed

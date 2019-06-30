@@ -201,7 +201,7 @@ public class validateEvents extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel(null, columnas);
         tblEventos.setModel(modelo);
 
-        
+        System.out.println(arrayEvents);
         for(Events event: arrayEvents){
             String newValor[] = {event.getName(), event.getCost()+"", event.getDate()+"", event.getDescription(), event.getCategory().getCategoryName(),
           event.getPlace().getPrincipalStreet(), event.getPlace().getSecondaryStreet(), event.getPlace().getReference()};

@@ -37,6 +37,21 @@ public class Events {
         
     }
 
+    public Events(int idEvents, String name, double cost, Date date, String hour, String minutes, String description, Category category, Place place, State state) {
+        this.idEvents = idEvents;
+        this.name = name;
+        this.cost = cost;
+        this.date = date;
+        this.hour = hour;
+        this.minutes = minutes;
+        this.description = description;
+        this.category = category;
+        this.place = place;
+        this.state = state;
+    }
+
+    
+    
     public int getIdEvents() {
         return idEvents;
     }
