@@ -20,7 +20,7 @@ public class DATConexion {
     
     public Connection getConnection() throws SQLException, ClassNotFoundException{
             String driver = "com.mysql.jdbc.Driver";
-            String url = "jdbc:mysql://localhost:3306/turismoloja";
+            String url = "jdbc:mysql://localhost:3306/turismo_loja";
             Class.forName(driver);
             return DriverManager.getConnection(url,"root","");
     };
